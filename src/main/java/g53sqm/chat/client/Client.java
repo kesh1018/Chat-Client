@@ -19,34 +19,48 @@ public class Client {
 	
 		String serverName = "localhost";
 		int port = 9000;
-		PrintWriter server_out = null;
-	    BufferedReader server_in = null;
 		
 		try{
 			System.out.println("Connecting to " + serverName + " on port " + port);
 			Socket socket = new Socket(serverName,port);
 		    System.out.println("Just connected to " + socket.getRemoteSocketAddress());
 		    
-		    server_in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-			server_out = new PrintWriter(socket.getOutputStream(), true);
+		    BufferedReader sysRead = new BufferedReader(new InputStreamReader(System.in));
+		    BufferedReader server_in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+		    BufferedWriter server_out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
 			
+			String response = server_in.readLine();
+			System.out.println("Received from Server: " + response);
 			
-			String lineread = "";
-			boolean done = false;
-		      while ((lineread = server_in.readLine()) != null && !done){
-		        System.out.println("Received from Server: " + lineread);
-		      
-		       
-		      } 
-		      
-		      
-		      System.out.println("Closing connection.");
-		      server_in.close();
-		      server_out.close();
-		      socket.close();
-		}catch(Exception e){
+			boolean flag = true;
+			while(flag){
+				System.out.println("Type QUIT to close the server");
+				String cmd = sysRead.readLine();
+				server_out.write(cmd + "\n");	
+				server_out.flush();
+				server_out.newLine();
+				
+				
+	            if (cmd.equals("QUIT"))
+	            {
+	            	System.out.println("Closing connection.");
+	                socket.close();
+	                sysRead.close();
+	                server_in.close();
+	                server_out.close();
+	                flag = false;
+	            } else
+	            {
+	                String outputline;
+	                while ((outputline = server_in.readLine()) != null)
+	                    System.out.println(outputline);
+	            
+	            }
+			}
+
+		}catch(IOException e){
 			e.printStackTrace();
-            System.exit(1);
+            
 		}
 	
 	}
