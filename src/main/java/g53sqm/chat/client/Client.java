@@ -2,27 +2,25 @@ package g53sqm.chat.client;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
 import java.net.Socket;
 
 public class Client {
 	
+	private static final int port = 9000;
+	private static final String serverName = "localhost";
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-	
-		String serverName = "localhost";
-		int port = 9000;
+		
+		Socket socket = null;
 		
 		try{
 			System.out.println("Connecting to " + serverName + " on port " + port);
-			Socket socket = new Socket(serverName,port);
+			socket = new Socket(serverName,port);
+		
 		    System.out.println("Just connected to " + socket.getRemoteSocketAddress());
 		    
 		    BufferedReader sysRead = new BufferedReader(new InputStreamReader(System.in));
@@ -31,16 +29,15 @@ public class Client {
 			
 			String response = server_in.readLine();
 			System.out.println("Received from Server: " + response);
+			System.out.println("Type QUIT to close the server");
 			
 			boolean flag = true;
 			while(flag){
-				System.out.println("Type QUIT to close the server");
+				
 				String cmd = sysRead.readLine();
 				server_out.write(cmd + "\n");	
 				server_out.flush();
-				server_out.newLine();
-				
-				
+		
 	            if (cmd.equals("QUIT"))
 	            {
 	            	System.out.println("Closing connection.");
@@ -52,9 +49,9 @@ public class Client {
 	            } else
 	            {
 	                String outputline;
-	                while ((outputline = server_in.readLine()) != null)
+	                if ((outputline = server_in.readLine()) != null)
 	                    System.out.println(outputline);
-	            
+	             
 	            }
 			}
 
