@@ -1,4 +1,4 @@
-package g53sqm.chat.client;
+
 
 import static org.junit.Assert.*;
 
