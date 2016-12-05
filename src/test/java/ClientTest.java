@@ -1,5 +1,3 @@
-
-
 import static org.junit.Assert.*;
 
 import java.io.BufferedReader;
@@ -26,18 +24,21 @@ public class ClientTest {
         	socket = new Socket(TEST_SERVER,TEST_PORT);
         	assertNotNull(socket);
         	
-        	BufferedReader sysRead = new BufferedReader(new InputStreamReader(System.in));
-        	BufferedWriter server_out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-		    BufferedReader server_in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+        	final BufferedReader sysRead = new BufferedReader
+        			(new InputStreamReader(System.in));
+        	final BufferedWriter server_out = new BufferedWriter
+        			(new OutputStreamWriter(socket.getOutputStream()));
+		    final BufferedReader server_in = new BufferedReader
+		    		(new InputStreamReader(socket.getInputStream()));
 		    		           
-            String result = server_in.readLine();
+            final String result = server_in.readLine();
             System.out.println(result);
             assertNotNull(result);
             
             boolean flag = true;
 			while(flag){
 				
-				String cmd = sysRead.readLine();
+				final String cmd = sysRead.readLine();
 				server_out.write(cmd + "\n");	
 				server_out.flush();
 		
@@ -73,7 +74,6 @@ public class ClientTest {
         try {
         	socket.close();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
             assertTrue(false);
         }

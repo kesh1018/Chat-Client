@@ -1,0 +1,37 @@
+src/main/java/g53sqm/chat/client/Client.java:10:	Comment is too large: Line too long
+src/main/java/g53sqm/chat/client/Client.java:13:	Comment is too large: Line too long
+src/main/java/g53sqm/chat/client/Client.java:15:	All methods are static.  Consider using a utility class instead. Alternatively, you could add a private constructor or make the class abstract to silence this warning.
+src/main/java/g53sqm/chat/client/Client.java:15:	headerCommentRequirement Required
+src/main/java/g53sqm/chat/client/Client.java:17:	fieldCommentRequirement Required
+src/main/java/g53sqm/chat/client/Client.java:18:	fieldCommentRequirement Required
+src/main/java/g53sqm/chat/client/Client.java:20:	Consider using varargs for methods or constructors which take an array the last parameter.
+src/main/java/g53sqm/chat/client/Client.java:20:	Parameter 'args' is not assigned and could be declared final
+src/main/java/g53sqm/chat/client/Client.java:20:	publicMethodCommentRequirement Required
+src/main/java/g53sqm/chat/client/Client.java:22:	Found 'DD'-anomaly for variable 'socket' (lines '22'-'26').
+src/main/java/g53sqm/chat/client/Client.java:25:	System.out.println is used
+src/main/java/g53sqm/chat/client/Client.java:28:	Potential violation of Law of Demeter (object not created locally)
+src/main/java/g53sqm/chat/client/Client.java:28:	System.out.println is used
+src/main/java/g53sqm/chat/client/Client.java:30:	Found 'DU'-anomaly for variable 'sysRead' (lines '30'-'70').
+src/main/java/g53sqm/chat/client/Client.java:33:	Potential violation of Law of Demeter (object not created locally)
+src/main/java/g53sqm/chat/client/Client.java:34:	Found 'DU'-anomaly for variable 'server_out' (lines '34'-'70').
+src/main/java/g53sqm/chat/client/Client.java:35:	Potential violation of Law of Demeter (object not created locally)
+src/main/java/g53sqm/chat/client/Client.java:37:	Potential violation of Law of Demeter (object not created locally)
+src/main/java/g53sqm/chat/client/Client.java:38:	System.out.println is used
+src/main/java/g53sqm/chat/client/Client.java:39:	System.out.println is used
+src/main/java/g53sqm/chat/client/Client.java:44:	Potential violation of Law of Demeter (object not created locally)
+src/main/java/g53sqm/chat/client/Client.java:45:	Potential violation of Law of Demeter (object not created locally)
+src/main/java/g53sqm/chat/client/Client.java:46:	Potential violation of Law of Demeter (object not created locally)
+src/main/java/g53sqm/chat/client/Client.java:48:	Position literals first in String comparisons
+src/main/java/g53sqm/chat/client/Client.java:48:	Potential violation of Law of Demeter (object not created locally)
+src/main/java/g53sqm/chat/client/Client.java:50:	System.out.println is used
+src/main/java/g53sqm/chat/client/Client.java:51:	Potential violation of Law of Demeter (object not created locally)
+src/main/java/g53sqm/chat/client/Client.java:52:	Potential violation of Law of Demeter (object not created locally)
+src/main/java/g53sqm/chat/client/Client.java:53:	Potential violation of Law of Demeter (object not created locally)
+src/main/java/g53sqm/chat/client/Client.java:54:	Potential violation of Law of Demeter (object not created locally)
+src/main/java/g53sqm/chat/client/Client.java:59:	Avoid assignments in operands
+src/main/java/g53sqm/chat/client/Client.java:59:	Found 'DD'-anomaly for variable 'outputline' (lines '59'-'59').
+src/main/java/g53sqm/chat/client/Client.java:59:	Found 'DU'-anomaly for variable 'outputline' (lines '59'-'70').
+src/main/java/g53sqm/chat/client/Client.java:59:	Potential violation of Law of Demeter (object not created locally)
+src/main/java/g53sqm/chat/client/Client.java:60:	System.out.println is used
+src/main/java/g53sqm/chat/client/Client.java:66:	Avoid printStackTrace(); use a logger call instead.
+src/main/java/g53sqm/chat/client/Client.java:66:	Potential violation of Law of Demeter (object not created locally)

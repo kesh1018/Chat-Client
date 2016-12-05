@@ -7,52 +7,63 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
 
+/* - This program provides a user interface in Command Line form to interact with server on a certain port
+ * - It's able to send text message to the server
+ * - It's able to receive text messages from the server
+ * - It's able to show the names of users who're currently connected to the server*/
+
 public class Client {
 	
-	private static final int port = 9000;
-	private static final String serverName = "localhost";
+	private static final int PORT = 9000;
+	private static final String SERVERNAME = "localhost";
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
+
 		Socket socket = null;
 		
 		try{
-			System.out.println("Connecting to " + serverName + " on port " + port);
-			socket = new Socket(serverName,port);
+			System.out.println("Connecting to " + SERVERNAME + " on port " + PORT);
+			socket = new Socket(SERVERNAME,PORT);
 		
 		    System.out.println("Just connected to " + socket.getRemoteSocketAddress());
 		    
-		    BufferedReader sysRead = new BufferedReader(new InputStreamReader(System.in));
-		    BufferedReader server_in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-		    BufferedWriter server_out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+		    final BufferedReader sysRead = new BufferedReader
+		    		(new InputStreamReader(System.in));
+		    final BufferedReader server_in = new BufferedReader
+		    		(new InputStreamReader(socket.getInputStream()));
+		    final BufferedWriter server_out = new BufferedWriter
+		    		(new OutputStreamWriter(socket.getOutputStream()));
 			
-			String response = server_in.readLine();
+			final String response = server_in.readLine();
 			System.out.println("Received from Server: " + response);
 			System.out.println("Type QUIT to close the server");
 			
 			boolean flag = true;
 			while(flag){
 				
-				String cmd = sysRead.readLine();
+				final String cmd = sysRead.readLine();
 				server_out.write(cmd + "\n");	
 				server_out.flush();
-		
-	            if (cmd.equals("QUIT"))
-	            {
-	            	System.out.println("Closing connection.");
-	                socket.close();
-	                sysRead.close();
-	                server_in.close();
-	                server_out.close();
-	                flag = false;
-	            } else
-	            {
-	                String outputline;
-	                if ((outputline = server_in.readLine()) != null)
-	                    System.out.println(outputline);
-	             
-	            }
+				
+				if(cmd != null){
+					
+					if (cmd.equals("QUIT"))
+		            {
+		            	System.out.println("Closing connection.");
+		                socket.close();
+		                sysRead.close();
+		                server_in.close();
+		                server_out.close();
+		                flag = false;
+		            } else
+		            {
+		                String outputline;
+		                if ((outputline = server_in.readLine()) != null){
+		                	System.out.println(outputline);
+		                }
+		            }
+				}
+	            
 			}
 
 		}catch(IOException e){
